@@ -46,11 +46,10 @@
 				      <div class="input-group-btn">
 				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">¿En donde quieres comer?<span class="caret"></span></button>
 				        <ul class="dropdown-menu">
-				          <li><a href="#">Mexico</a></li>
-				          <li><a href="#">Monterrey</a></li>
-				          <li><a href="#">Guadalajara</a></li>
-				          <li role="separator" class="divider"></li>
-				          <li><a href="#">Regresa a inicio</a></li>
+                {% for city in cities %}
+                  <li><a href="#">{{city.name}}</a></li>
+                {% endfor %}
+				          
 				        </ul>
 				      </div><!-- /btn-group -->
 				      <input type="text" class="form-control" aria-label="...">
@@ -61,90 +60,46 @@
       	<div class="row content-home">
       		<div class="col-sm-3">
       			<div class="form-group">
-      				<label>Tipo de comida</label>
-      				<div class="checkbox">
-      					<label>
-      						<input type="checkbox">Todas las categorias
-      					</label>
-      				</div>
-      				<div class="checkbox">
-      					<label>
-      						<input type="checkbox">Tacos
-      					</label>
-      				</div>
-      				<div class="checkbox">
-  						<label>
-      						<input type="checkbox">Pizza
-      					</label>
-      				</div>
-      				<div class="checkbox">
-  						<label>
-      						<input type="checkbox">Hamburguesa
-      					</label>
-      				</div>
+              <label>Tipo de comida</label>
+              {%for category in categories%}
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox">{{category.name}}
+                  </label>
+                </div>
+              {%endfor%}
+      			
+      	
       			</div>
       				<div class="form-group">
       				<label>Formas de pago</label>
+              {%for payment in payments%}
       				<div class="checkbox">
       					<label>
-      						<input type="checkbox">Tarjeta de credito
+      						<input type="checkbox">{{payment.pay}}
       					</label>
       				</div>
-      				<div class="checkbox">
-      					<label>
-      						<input type="checkbox">Tarjeta de debito
-      					</label>
-      				</div>
-      				<div class="checkbox">
-  						<label>
-      						<input type="checkbox">Efectivo
-      					</label>
-      				</div>
-      				<div class="checkbox">
-  						<label>
-      						<input type="checkbox">Deposito
-      					</label>
-      				</div>
+              {%endfor%}
       			</div>
       		</div>
       		<div class="col-sm-9">
       			<div class="list-group">
+            {%for restaurant in restaurants%}
       				<a href="" class="list-group-item">
       					<div class="col-sm-3">
-      						<img src="http://placehold.it/350x250" class="media-object img-rounded img-responsive">
+      						<img src="{{MEDIA_URL}}{{restaurant.imagen}}" class="media-object img-rounded img-responsive">
       					</div>
       					<div class="col-sm-6">
-      						<h3>La comelona</h3>
-      						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      						<h3>{{restaurant.name}}</h3>
+      						<p>{{restaurant.description}}</p>
       					</div>
       					<div class="col-sm-3 text-center">
       						<h2>4<small>puntos</small></h2>
       						<button type="button" class="btn btn-primary btn-lg btn-block">Mas info</button>
       					</div>
       				</a>
-      				<a href="" class="list-group-item">
-      					<div class="col-sm-3">
-      						<img src="http://placehold.it/350x250" class="media-object img-rounded img-responsive">
-      					</div>
-      					<div class="col-sm-6">
-      						<h3>La comelona</h3>
-      						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      					</div>
-      					<div class="col-sm-3 text-center">
-      						<h2>4<small>puntos</small></h2>
-      						<button type="button" class="btn btn-primary btn-lg btn-block">Mas info</button>
-      					</div>
-      				</a>
+              {%endfor%}
+      			
       			</div>
       		</div>
       	</div>
