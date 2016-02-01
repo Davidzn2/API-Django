@@ -11,5 +11,7 @@ class IndexView(TemplateView):
 		context['categories'] = Category.objects.all()
 		context['payments'] = Payment.objects.all()
 		context['cities'] = City.objects.all()
-		context['restaurants'] = Restaurant.objects.all()
+		restaurants = Restaurant.objects.all()[:5]
+		tips = [ restaurant.tip_set.all().count() for restaurant in restaurants]
+		context['restaurants'] = zip(restaurants,tips)
 		return context

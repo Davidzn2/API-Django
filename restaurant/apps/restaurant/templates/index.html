@@ -84,7 +84,7 @@
       		</div>
       		<div class="col-sm-9">
       			<div class="list-group">
-            {%for restaurant in restaurants%}
+            {%for restaurant, tips in restaurants%}
       				<a href="" class="list-group-item">
       					<div class="col-sm-3">
       						<img src="{{MEDIA_URL}}{{ restaurant.image }}" class="media-object img-rounded img-responsive">
@@ -94,7 +94,7 @@
       						<p>{{restaurant.description}}</p>
       					</div>
       					<div class="col-sm-3 text-center">
-      						<h2>4<small>puntos</small></h2>
+      						<h2>{{ tips }}<small>puntos</small></h2>
       						<button type="button" class="btn btn-primary btn-lg btn-block">Mas info</button>
       					</div>
       				</a>
